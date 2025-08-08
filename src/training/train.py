@@ -19,7 +19,7 @@ import glob
 
 # 配置图像目录路径 - 使用正确的路径
 IMAGE_BASE_DIRS = [
-    "../../data/raw/coco_2014_caption",  # 项目目录下的coco_2014_caption文件夹
+    "../data/raw/coco_2014_caption",  # 项目目录下的coco_2014_caption文件夹
     "E:\\LLM\\Qwen2-VL_fine-tuning\\Qwen2-VL_fine-tuning\\coco_2014_caption",  # 完整路径
     "E:\\LLM\\coco_2014_caption",  # 原始错误路径（备用）
 ]
@@ -159,30 +159,30 @@ def predict(messages, model):
 
 
 # 在modelscope上下载Qwen2-VL模型到本地目录下
-model_dir = snapshot_download("Qwen/Qwen2-VL-2B-Instruct", cache_dir="../../models/", revision="master")
+model_dir = snapshot_download("Qwen/Qwen2-VL-2B-Instruct", cache_dir="../models/", revision="master")
 
 # 使用Transformers加载模型权重
-tokenizer = AutoTokenizer.from_pretrained("../../models/Qwen/Qwen2-VL-2B-Instruct/", use_fast=False, trust_remote_code=True)
-processor = AutoProcessor.from_pretrained("../../models/Qwen/Qwen2-VL-2B-Instruct")
+tokenizer = AutoTokenizer.from_pretrained("../models/Qwen/Qwen2-VL-2B-Instruct/", use_fast=False, trust_remote_code=True)
+processor = AutoProcessor.from_pretrained("../models/Qwen/Qwen2-VL-2B-Instruct")
 
-model = Qwen2VLForConditionalGeneration.from_pretrained("../../models/Qwen/Qwen2-VL-2B-Instruct/", device_map="auto", torch_dtype=torch.bfloat16, trust_remote_code=True,)
+model = Qwen2VLForConditionalGeneration.from_pretrained("../models/Qwen/Qwen2-VL-2B-Instruct/", device_map="auto", torch_dtype=torch.bfloat16, trust_remote_code=True,)
 model.enable_input_require_grads()  # 开启梯度检查点时，要执行该方法
 
 # 处理数据集：读取json文件
 # 拆分成训练集和测试集，保存为data_vl_train.json和data_vl_test.json
-train_json_path = "../../data/processed/data_vl.json"
+train_json_path = "../data/processed/data_vl.json"
 with open(train_json_path, 'r') as f:
     data = json.load(f)
     train_data = data[:-4]
     test_data = data[-4:]
 
-with open("../../data/processed/data_vl_train.json", "w") as f:
+with open("../data/processed/data_vl_train.json", "w") as f:
     json.dump(train_data, f)
 
-with open("../../data/processed/data_vl_test.json", "w") as f:
+with open("../data/processed/data_vl_test.json", "w") as f:
     json.dump(test_data, f)
 
-train_ds = Dataset.from_json("../../data/processed/data_vl_train.json")
+train_ds = Dataset.from_json("../data/processed/data_vl_train.json")
 # 先映射处理函数，然后过滤掉None值
 print("Processing training dataset...")
 print(f"Checking image directories:")
@@ -221,7 +221,7 @@ peft_model = get_peft_model(model, config)
 
 # 配置训练参数
 args = TrainingArguments(
-    output_dir="../../output/Qwen2-VL-2B",
+    output_dir="../output/Qwen2-VL-2B",
     per_device_train_batch_size=4,
     gradient_accumulation_steps=4,
     logging_steps=10,

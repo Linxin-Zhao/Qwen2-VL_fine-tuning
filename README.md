@@ -16,14 +16,15 @@ Qwen2-VL_fine-tuning/
 │   │   └── data_vl_test.json
 │   └── sample_images/      # 示例图片
 │       └── sample_image1.png
-├── scripts/                # 脚本文件
+├── src/                    # 源代码文件
 │   ├── data_processing/    # 数据处理脚本
 │   │   ├── data2csv.py     # 下载数据并转换为CSV
 │   │   └── csv2json.py     # 将CSV转换为训练用JSON格式
 │   ├── training/           # 训练相关
 │   │   └── train.py        # LoRA微调训练脚本
-│   └── inference/          # 推理相关
-│       └── lora_inference.py  # 使用微调模型进行推理
+│   ├── inference/          # 推理相关
+│   │   └── lora_inference.py  # 使用微调模型进行推理
+│   └── load_model.py       # 模型加载工具
 ├── models/                 # 模型文件
 │   └── Qwen/
 │       └── Qwen2-VL-2B-Instruct/  # 预训练模型
@@ -31,8 +32,6 @@ Qwen2-VL_fine-tuning/
 │   └── Qwen2-VL-2B/
 │       └── checkpoint-62/  # LoRA微调后的模型权重
 ├── configs/                # 配置文件
-├── utils/                  # 工具函数
-│   └── load_model.py       # 模型加载工具
 ├── requirements.txt        # 依赖包列表
 ├── README.md              # 项目说明
 └── .gitignore             # Git忽略文件
@@ -43,7 +42,7 @@ Qwen2-VL_fine-tuning/
 ### 1. 数据处理
 ```bash
 # 进入数据处理目录
-cd scripts/data_processing
+cd src/data_processing
 
 # 下载COCO数据并转换为CSV
 python data2csv.py
@@ -55,7 +54,7 @@ python csv2json.py
 ### 2. 模型训练
 ```bash
 # 进入训练目录
-cd scripts/training
+cd src/training
 
 # 开始LoRA微调训练
 python train.py
@@ -64,7 +63,7 @@ python train.py
 ### 3. 模型推理
 ```bash
 # 进入推理目录
-cd scripts/inference
+cd src/inference
 
 # 使用微调后的模型进行推理
 python lora_inference.py
