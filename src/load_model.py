@@ -6,7 +6,7 @@ import torch
 model_dir = snapshot_download("Qwen/Qwen2-VL-2B-Instruct", cache_dir="../models/", revision="master")
 
 # 使用Transformers加载模型权重
-tokenizer = AutoTokenizer.from_pretrained("../models/Qwen/Qwen2-VL-2B-Instruct/", use_fast=False, trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained("../models/Qwen/Qwen/Qwen2-VL-2B-Instruct/", use_fast=False, trust_remote_code=True)
 # 特别的，Qwen2-VL-2B-Instruct模型需要使用Qwen2VLForConditionalGeneration来加载
-model = Qwen2VLForConditionalGeneration.from_pretrained("../models/Qwen/Qwen2-VL-2B-Instruct/", device_map="auto", torch_dtype=torch.bfloat16, trust_remote_code=True,)
+model = Qwen2VLForConditionalGeneration.from_pretrained("../models/Qwen/Qwen/Qwen2-VL-2B-Instruct/", device_map="auto", torch_dtype=torch.bfloat16, trust_remote_code=True,)
 model.enable_input_require_grads()  # 开启梯度检查点时，要执行该方法

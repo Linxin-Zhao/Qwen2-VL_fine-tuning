@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 # 载入CSV文件
-df = pd.read_csv('../data/processed/coco-2024-dataset.csv')
+df = pd.read_csv('../../data/processed/coco-2024-dataset.csv')
 conversations = []
 
 # 添加对话数据
@@ -22,5 +22,5 @@ for i in range(len(df)):
     })
 
 # 保存为Json
-with open('../data/processed/data_vl.json', 'w', encoding='utf-8') as f:
+with open('../../data/processed/data_vl.json', 'w', encoding='utf-8') as f:
     json.dump(conversations, f, ensure_ascii=False, indent=2)

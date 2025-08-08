@@ -14,10 +14,10 @@ config = LoraConfig(
 
 # default: Load the model on the available device(s)
 model = Qwen2VLForConditionalGeneration.from_pretrained(
-    "../models/Qwen/Qwen2-VL-2B-Instruct", torch_dtype="auto", device_map="auto"
+    "../../models/Qwen/Qwen/Qwen2-VL-2B-Instruct", torch_dtype="auto", device_map="auto"
 )
-model = PeftModel.from_pretrained(model, model_id="../output/Qwen2-VL-2B/checkpoint-62", config=config)
-processor = AutoProcessor.from_pretrained("../models/Qwen/Qwen2-VL-2B-Instruct")
+model = PeftModel.from_pretrained(model, model_id="../../output/Qwen2-VL-2B/checkpoint-62", config=config)
+processor = AutoProcessor.from_pretrained("../../models/Qwen/Qwen/Qwen2-VL-2B-Instruct")
 
 messages = [
     {
