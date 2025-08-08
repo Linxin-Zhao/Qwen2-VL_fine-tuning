@@ -1,13 +1,35 @@
+# 临时文件和缓存
 ._____temp/
-coco_2014_caption/
-Qwen/
-coco-2024-dataset.csv
 tempCodeRunnerFile.py
 .idea/
-data_vl_train.json
-data_vl_test.json
-data_vl.json
-.swanlog/
-output/*
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# 数据文件
+data/
+
+# 模型文件
+models/
+
+# 输出文件
+output/
+swanlog/
+
+# 环境和依赖
+.env
+.venv
+env/
+venv/
+
+# 日志文件
+*.log
+logs/
+
+# 系统文件
+.DS_Store
+Thumbs.db
 
 
