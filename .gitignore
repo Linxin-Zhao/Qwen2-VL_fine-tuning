@@ -9,7 +9,11 @@ __pycache__/
 .Python
 
 # 数据文件
-data/
+data/processed/
+data/raw/
+
+
+
 
 # 模型文件
 models/
