@@ -232,9 +232,10 @@ args = TrainingArguments(
     save_on_each_node=True,
     gradient_checkpointing=True,
     report_to="none",
+    remove_unused_columns=False,
 )
         
-# 设置SwanLab回调
+# 设置SwanLab回调 (disabled for now)
 swanlab_callback = SwanLabCallback(
     project="Qwen2-VL-finetune",
     experiment_name="qwen2-vl-coco2014",

@@ -7,3 +7,7 @@ tempCodeRunnerFile.py
 data_vl_train.json
 data_vl_test.json
 data_vl.json
+.swanlog/
+output/*
+
+
