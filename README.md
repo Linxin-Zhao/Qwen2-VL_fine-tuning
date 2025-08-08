@@ -14,8 +14,12 @@ Qwen2-VL_fine-tuning/
 │   │   ├── data_vl.json
 │   │   ├── data_vl_train.json
 │   │   └── data_vl_test.json
-│   └── sample_images/      # 示例图片
-│       └── sample_image1.png
+│   ├── sample_images/      # 示例图片
+│   │   ├── 1.jpg
+│   │   └── 2.jpg
+│   └── md/                 # README文档图片
+│       ├── 1.jpg           # 推理测试图片
+│       └── console.png     # 控制台输出截图
 ├── src/                    # 源代码文件
 │   ├── data_processing/    # 数据处理脚本
 │   │   ├── data2csv.py     # 下载数据并转换为CSV
