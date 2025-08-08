@@ -25,12 +25,28 @@ messages = [
         "content": [
             {
                 "type": "image",
-                "image": "https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen-VL/assets/demo.jpeg",
+                "image": r"D:\ZLX\Qwen2-VL_fine-tuning\data\sample_images\1.jpg",
+
             },
             {"type": "text", "text": "COCO Yes:"},
         ],
     }
 ]
+
+# messages = [
+#     {
+#         "role": "user",
+#         "content": [
+#             {
+#                 "type": "image",
+#                 "image": "https://p0.ssl.qhimgs1.com/t01a8080299b2d5113e.jpg",
+
+#             },
+#             {"type": "text", "text": "COCO Yes:"},
+#         ],
+#     }
+# ]
+
 
 # Preparation for inference
 text = processor.apply_chat_template(

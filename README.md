@@ -79,6 +79,7 @@ python lora_inference.py
 
 ![控制台输出](data/md/console.png)
 
+
 ## 注意事项
 
 - 确保已安装所有依赖包：`pip install -r requirements.txt`
