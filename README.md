@@ -69,6 +69,68 @@ cd src/inference
 python lora_inference.py
 ```
 
+## 推理测试说明
+
+### 测试图片准备
+
+项目提供了示例图片用于测试：
+- `data/sample_images/1.jpg` - 测试图片1
+- `data/sample_images/2.jpg` - 测试图片2
+- 也可以使用 `data/raw/coco_2014_caption/` 目录下的任意图片
+
+### 修改推理脚本
+
+在 `src/inference/lora_inference.py` 中，可以修改图片路径来测试不同的图片：
+
+```python
+messages = [
+    {
+        "role": "user",
+        "content": [
+            {
+                "type": "image",
+                "image": r"D:\ZLX\Qwen2-VL_fine-tuning\data\sample_images\1.jpg",  # 修改此路径
+            },
+            {"type": "text", "text": "COCO Yes:"},
+        ],
+    }
+]
+```
+
+### 推理输出示例
+
+运行推理脚本后，会看到类似以下输出：
+
+```
+Loading checkpoint shards: 100%|████████████████████| 2/2 [00:01<00:00,  1.04it/s]
+['A small cat running through the grass.']
+```
+
+### 支持的输入格式
+
+1. **本地图片路径**：
+   ```python
+   "image": r"D:\path\to\your\image.jpg"
+   ```
+
+2. **网络图片URL**：
+   ```python
+   "image": "https://example.com/image.jpg"
+   ```
+
+### 推理性能说明
+
+- **首次运行**：需要加载模型权重，耗时约1-2秒
+- **后续推理**：单张图片推理时间约0.1-0.5秒
+- **GPU要求**：建议使用CUDA环境以获得最佳性能
+- **内存要求**：模型加载需要约4-6GB显存
+
+### 常见问题
+
+1. **图片路径错误**：确保图片文件存在且路径正确
+2. **CUDA内存不足**：可以尝试减少batch_size或使用CPU推理
+3. **模型加载失败**：检查checkpoint路径是否正确
+
 ## 注意事项
 
 - 确保已安装所有依赖包：`pip install -r requirements.txt`
