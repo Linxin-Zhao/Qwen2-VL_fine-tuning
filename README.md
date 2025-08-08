@@ -75,3 +75,8 @@ python lora_inference.py
 - 训练需要GPU支持，建议使用CUDA环境
 - 模型文件较大，首次运行会自动下载
 - 所有路径引用已更新为相对于新目录结构的路径
+
+## 参考资料
+
+本项目参考了以下博客教程：
+- [Qwen2-VL多模态大模型微调实战（完整代码）](https://blog.csdn.net/SoulmateY/article/details/143807035)
